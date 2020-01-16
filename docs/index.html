@@ -2406,12 +2406,13 @@ img {
 			<a href="#rxreactjest-helpers" id="rxreactjest-helpers" style="color: inherit; text-decoration: none;">
 				<h1>RxReact/Jest Helpers</h1>
 			</a>
-			<p>Development Sponsored By:<br><a href="http://www.carbonfive.com"><img src="./assets/C5_final_logo_horiz.png" alt="Carbon Five"></a></p>
 			<p><a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="styled with prettier"></a>
 				<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/rxreact/jest-helpers.svg" alt="Greenkeeper badge"></a>
-				<a href="https://travis-ci.org/rxreact/jest-helpers"><img src="https://img.shields.io/travis/rxreact/jest-helpers.svg" alt="Travis"></a>
-				<a href="https://coveralls.io/github/rxreact/jest-helpers"><img src="https://img.shields.io/coveralls/rxreact/jest-helpers.svg" alt="Coveralls"></a>
-			<a href="https://david-dm.org/rxreact/jest-helpers?type=dev"><img src="https://david-dm.org/rxreact/jest-helpers/dev-status.svg" alt="Dev Dependencies"></a></p>
+				<a href="https://travis-ci.com/rxreact/jest-helpers"><img src="https://travis-ci.com/rxreact/jest-helpers.svg?branch=master" alt="Build Status"></a>
+			<a href="https://coveralls.io/github/rxreact/jest-helpers?branch=master"><img src="https://coveralls.io/repos/github/rxreact/jest-helpers/badge.svg?branch=master" alt="Coverage Status"></a></p>
+			<p>Development Sponsored By:<br><a href="http://www.carbonfive.com"><img src="./assets/C5_final_logo_horiz.png" alt="Carbon Five"></a></p>
+			<p>RxReact/Jest Helpers are simple tools for testing RxJS observables. This can be useful any project, not just React.</p>
+			<p><a href="https://hannahhoward.github.io/rxreact">Typedocs for Jest Helpers</a></p>
 			<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 				<h2>Installation</h2>
 			</a>
@@ -2425,23 +2426,8 @@ img {
 			<a href="#basic-usage" id="basic-usage" style="color: inherit; text-decoration: none;">
 				<h2>Basic Usage</h2>
 			</a>
-			<p>RxReact/Jest Helpers are simple tools for testing RxJS observables. This can be useful any project, not just React.</p>
-			<p><a href="https://hannahhoward.github.io/rxreact">Typedocs for Jest Helpers</a></p>
-			<p>Specifically, this library adds a function for making an observable hot, and adds two matchers to Jest to checking if an observable has emitted a value.</p>
+			<p>This library adds a function for making an observable hot, and adds two matchers to Jest to checking if an observable has emitted a value.</p>
 			<p>If you have used <code>expect(jest.fn()).toHaveBeenCalled()</code> and <code>expect(jest.fn()).toHaveBeenCalledWith(value)</code>, these helpers should feel familiar.</p>
-			<a href="#loading-the-library" id="loading-the-library" style="color: inherit; text-decoration: none;">
-				<h3>Loading the library</h3>
-			</a>
-			<p>To use the <code>expect(observable$).toEmit()</code> and <code>expect(observable$).toEmitValue(value)</code> functions in your test, you must import the library in the test file.</p>
-			<p>If you need <code>watchSignal</code> (and you probably will), simply importing it will do the job:</p>
-			<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { watchSignal } <span class="hljs-keyword">from</span> <span class="hljs-string">"@rxreact/jest-helpers"</span>;</code></pre>
-			<p>If you have a test that only tests hot signals, you will still need to import the library to you test file to get the jest extensions:</p>
-			<pre><code class="language-typescript"><span class="hljs-keyword">import</span> <span class="hljs-string">"@rxreact/jest-helpers"</span>;</code></pre>
-			<a href="#awaiting-expectations" id="awaiting-expectations" style="color: inherit; text-decoration: none;">
-				<h3>Awaiting Expectations</h3>
-			</a>
-			<p><code>.toEmit()</code> / <code>toEitValue()</code> work by waiting 100 ms for the observable to emit, to account for asynchronous observables. So you must <code>await</code> every expectation, to make sure you catch failures:</p>
-			<pre><code class="language-typescript"><span class="hljs-keyword">await</span> expect(o$).toEmit();</code></pre>
 			<a href="#checking-if-a-observable-emitted" id="checking-if-a-observable-emitted" style="color: inherit; text-decoration: none;">
 				<h3>Checking if a observable emitted</h3>
 			</a>
@@ -2483,6 +2469,19 @@ it(<span class="hljs-string">"watches a cold signal"</span>, <span class="hljs-k
   <span class="hljs-comment">// A hot watched signal remembers values.</span>
   <span class="hljs-keyword">await</span> expect(hot$).toEmitValue(<span class="hljs-string">"a"</span>);
 });</code></pre>
+			<a href="#loading-the-library" id="loading-the-library" style="color: inherit; text-decoration: none;">
+				<h3>Loading the library</h3>
+			</a>
+			<p>To use the <code>expect(observable$).toEmit()</code> and <code>expect(observable$).toEmitValue(value)</code> functions in your test, you must import the library in the test file.</p>
+			<p>If you need <code>watchSignal</code> (and you probably will), simply importing it will do the job:</p>
+			<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { watchSignal } <span class="hljs-keyword">from</span> <span class="hljs-string">"@rxreact/jest-helpers"</span>;</code></pre>
+			<p>If you have a test that only tests hot signals, you will still need to import the library to you test file to get the jest extensions:</p>
+			<pre><code class="language-typescript"><span class="hljs-keyword">import</span> <span class="hljs-string">"@rxreact/jest-helpers"</span>;</code></pre>
+			<a href="#awaiting-expectations" id="awaiting-expectations" style="color: inherit; text-decoration: none;">
+				<h3>Awaiting Expectations</h3>
+			</a>
+			<p><code>.toEmit()</code> / <code>toEitValue()</code> work by waiting 100 ms for the observable to emit, to account for asynchronous observables. So you must <code>await</code> every expectation, to make sure you catch failures:</p>
+			<pre><code class="language-typescript"><span class="hljs-keyword">await</span> expect(o$).toEmit();</code></pre>
 		</div>
 		<div style="position:relative;"><a name="typedoc-main-index" class="tsd-anchor"></a></div>
 		<section class="tsd-panel-group tsd-index-group">
@@ -2532,7 +2531,7 @@ it(<span class="hljs-string">"watches a cold signal"</span>, <span class="hljs-k
 				<div class="tsd-signature tsd-kind-icon">Result&lt;T&gt;<span class="tsd-signature-symbol">:</span> <a href="interfaces/okresult.html" class="tsd-signature-type">OkResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/errorresult.html" class="tsd-signature-type">ErrorResult</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/9813257/src/jest-helpers.ts#L4">jest-helpers.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/28ce1f2/src/jest-helpers.ts#L4">jest-helpers.ts:4</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2555,7 +2554,7 @@ it(<span class="hljs-string">"watches a cold signal"</span>, <span class="hljs-k
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/9813257/src/jest-helpers.ts#L23">jest-helpers.ts:23</a></li>
+								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/28ce1f2/src/jest-helpers.ts#L23">jest-helpers.ts:23</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2578,7 +2577,7 @@ it(<span class="hljs-string">"watches a cold signal"</span>, <span class="hljs-k
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/9813257/src/jest-helpers.ts#L30">jest-helpers.ts:30</a></li>
+								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/28ce1f2/src/jest-helpers.ts#L30">jest-helpers.ts:30</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2607,7 +2606,7 @@ it(<span class="hljs-string">"watches a cold signal"</span>, <span class="hljs-k
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/9813257/src/jest-helpers.ts#L16">jest-helpers.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/28ce1f2/src/jest-helpers.ts#L16">jest-helpers.ts:16</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2636,7 +2635,7 @@ it(<span class="hljs-string">"watches a cold signal"</span>, <span class="hljs-k
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/9813257/src/jest-helpers.ts#L56">jest-helpers.ts:56</a></li>
+								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/28ce1f2/src/jest-helpers.ts#L56">jest-helpers.ts:56</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2665,7 +2664,7 @@ it(<span class="hljs-string">"watches a cold signal"</span>, <span class="hljs-k
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/9813257/src/jest-helpers.ts#L66">jest-helpers.ts:66</a></li>
+								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/28ce1f2/src/jest-helpers.ts#L66">jest-helpers.ts:66</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2700,7 +2699,7 @@ it(<span class="hljs-string">"watches a cold signal"</span>, <span class="hljs-k
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/9813257/src/jest-helpers.ts#L83">jest-helpers.ts:83</a></li>
+								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/28ce1f2/src/jest-helpers.ts#L83">jest-helpers.ts:83</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2737,7 +2736,7 @@ it(<span class="hljs-string">"watches a cold signal"</span>, <span class="hljs-k
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/9813257/src/jest-helpers.ts#L109">jest-helpers.ts:109</a></li>
+								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/28ce1f2/src/jest-helpers.ts#L109">jest-helpers.ts:109</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2777,7 +2776,7 @@ it(<span class="hljs-string">"watches a cold signal"</span>, <span class="hljs-k
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/9813257/src/jest-helpers.ts#L40">jest-helpers.ts:40</a></li>
+								<li>Defined in <a href="https://github.com/rxreact/jest-helpers/blob/28ce1f2/src/jest-helpers.ts#L40">jest-helpers.ts:40</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">

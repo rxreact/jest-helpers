@@ -1,13 +1,16 @@
 # RxReact/Jest Helpers
 
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![Greenkeeper badge](https://badges.greenkeeper.io/rxreact/jest-helpers.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/rxreact/jest-helpers.svg?branch=master)](https://travis-ci.com/rxreact/jest-helpers)
+[![Coverage Status](https://coveralls.io/repos/github/rxreact/jest-helpers/badge.svg?branch=master)](https://coveralls.io/github/rxreact/jest-helpers?branch=master)
+
 Development Sponsored By:  
 [![Carbon Five](./assets/C5_final_logo_horiz.png)](http://www.carbonfive.com)
 
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![Greenkeeper badge](https://badges.greenkeeper.io/rxreact/jest-helpers.svg)](https://greenkeeper.io/)
-[![Travis](https://img.shields.io/travis/rxreact/jest-helpers.svg)](https://travis-ci.org/rxreact/jest-helpers)
-[![Coveralls](https://img.shields.io/coveralls/rxreact/jest-helpers.svg)](https://coveralls.io/github/rxreact/jest-helpers)
-[![Dev Dependencies](https://david-dm.org/rxreact/jest-helpers/dev-status.svg)](https://david-dm.org/rxreact/jest-helpers?type=dev)
+RxReact/Jest Helpers are simple tools for testing RxJS observables. This can be useful any project, not just React.
+
+[Typedocs for Jest Helpers](https://rxreact.github.io/jest-helpers/)
 
 ## Installation
 
@@ -33,37 +36,9 @@ import { watchSignal } from "@rxreact/jest-helpers";
 
 ## Basic Usage
 
-RxReact/Jest Helpers are simple tools for testing RxJS observables. This can be useful any project, not just React.
-
-[Typedocs for Jest Helpers](https://hannahhoward.github.io/rxreact)
-
-Specifically, this library adds a function for making an observable hot, and adds two matchers to Jest to checking if an observable has emitted a value.
+This library adds a function for making an observable hot, and adds two matchers to Jest to checking if an observable has emitted a value.
 
 If you have used `expect(jest.fn()).toHaveBeenCalled()` and `expect(jest.fn()).toHaveBeenCalledWith(value)`, these helpers should feel familiar.
-
-### Loading the library
-
-To use the `expect(observable$).toEmit()` and `expect(observable$).toEmitValue(value)` functions in your test, you must import the library in the test file.
-
-If you need `watchSignal` (and you probably will), simply importing it will do the job:
-
-```typescript
-import { watchSignal } from "@rxreact/jest-helpers";
-```
-
-If you have a test that only tests hot signals, you will still need to import the library to you test file to get the jest extensions:
-
-```typescript
-import "@rxreact/jest-helpers";
-```
-
-### Awaiting Expectations
-
-`.toEmit()` / `toEitValue()` work by waiting 100 ms for the observable to emit, to account for asynchronous observables. So you must `await` every expectation, to make sure you catch failures:
-
-```typescript
-await expect(o$).toEmit();
-```
 
 ### Checking if a observable emitted
 
@@ -117,4 +92,28 @@ it("watches a cold signal", async () => {
   // A hot watched signal remembers values.
   await expect(hot$).toEmitValue("a");
 });
+```
+
+### Loading the library
+
+To use the `expect(observable$).toEmit()` and `expect(observable$).toEmitValue(value)` functions in your test, you must import the library in the test file.
+
+If you need `watchSignal` (and you probably will), simply importing it will do the job:
+
+```typescript
+import { watchSignal } from "@rxreact/jest-helpers";
+```
+
+If you have a test that only tests hot signals, you will still need to import the library to you test file to get the jest extensions:
+
+```typescript
+import "@rxreact/jest-helpers";
+```
+
+### Awaiting Expectations
+
+`.toEmit()` / `toEitValue()` work by waiting 100 ms for the observable to emit, to account for asynchronous observables. So you must `await` every expectation, to make sure you catch failures:
+
+```typescript
+await expect(o$).toEmit();
 ```
