@@ -10,6 +10,10 @@
     "dist"
   ],
   "author": "Will Ockelmann-Wagner <wow@carbonfive.com>",
+  "contributors": [
+    "Will Ockelmann-Wagner (https://github.com/will-wow)",
+    "Sidney Keese (https://github.com/sidke)"
+  ], 
   "repository": {
     "type": "git",
     "url": ""
@@ -22,7 +26,7 @@
     "lint": "npm-run-all -c lint:*",
     "lint:eslint": "eslint '**/*.{ts,tsx}'",
     "lint:prettier": "prettier --check '**/*.{tsx,ts,css,html,md,json}'",
-    "format": "npm-run-all -c lint:*",
+    "format": "npm-run-all -c format:*",
     "format:eslint": "eslint --fix '**/*.{ts,tsx}'",
     "format:prettier": "prettier --write '**/*.{tsx,ts,css,html,md,json}'",
     "prebuild": "rimraf dist",
@@ -77,10 +81,6 @@
       "src/*.{js,ts}"
     ]
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -107,6 +107,7 @@
     "jest-config": "^24.9.0",
     "lint-staged": "^8.0.0",
     "lodash.camelcase": "^4.3.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.14.3",
     "prompt": "^1.0.0",
     "replace-in-file": "^3.4.2",
@@ -121,7 +122,7 @@
     "semantic-release": "^15.9.16",
     "shelljs": "^0.8.3",
     "travis-deploy-once": "^5.0.9",
-    "ts-jest": "^23.10.2",
+    "ts-jest": "^24.3.0",
     "ts-node": "^7.0.1",
     "typedoc": "^0.15.8",
     "typescript": "^3.7.4"
