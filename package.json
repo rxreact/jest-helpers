@@ -25,10 +25,10 @@
   "scripts": {
     "lint": "npm-run-all -c lint:*",
     "lint:eslint": "eslint '**/*.{ts,tsx}'",
-    "lint:prettier": "prettier --check '**/*.{tsx,ts,css,html,md,json}'",
+    "lint:prettier": "prettier --check '**/*.{ts,tsx,md,json}'",
     "format": "npm-run-all -c format:*",
     "format:eslint": "eslint --fix '**/*.{ts,tsx}'",
-    "format:prettier": "prettier --write '**/*.{tsx,ts,css,html,md,json}'",
+    "format:prettier": "prettier --write '**/*.{ts,tsx,md,json}'",
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
     "start": "rollup -c rollup.config.ts -w",
@@ -43,8 +43,13 @@
     "precommit": "lint-staged",
     "travis-deploy-once": "travis-deploy-once"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "{src,test}/**/*.ts": [
+    "**/*.{ts,tsx,md,json}": [
       "prettier --write",
       "git add"
     ]
