@@ -1,8 +1,14 @@
 {
   "name": "@rxreact/jest-helpers",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "version": "0.0.0-development",
+  "description": "Helpers for using Jest to test RxJS observables",
+  "keywords": [
+    "jest",
+    "rxjs",
+    "observable",
+    "rxreact",
+    "test"
+  ],
   "main": "dist/jest-helpers.umd.js",
   "module": "dist/jest-helpers.es5.js",
   "typings": "dist/types/jest-helpers.d.ts",
@@ -41,11 +47,13 @@
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "commitmsg": "commitlint -E HUSKY_GIT_PARAMS"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test:prod && npm run build"
     }
   },
   "lint-staged": {
@@ -58,6 +66,9 @@
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "jest": {
     "transform": {
@@ -124,7 +135,7 @@
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.18.0",
     "rxjs": "^6.5.4",
-    "semantic-release": "^15.9.16",
+    "semantic-release": "^16.0.2",
     "shelljs": "^0.8.3",
     "travis-deploy-once": "^5.0.9",
     "ts-jest": "^24.3.0",
